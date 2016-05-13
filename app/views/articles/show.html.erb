@@ -6,13 +6,13 @@
 
 
   <div class="article-categories border-bot">
-
-  <% if current_user.clearance == "admin" || current_user.clearance == "moderator"%>
-    <br><br>
-    <span class="thicker"> Admin privileges: </span>
-    <%= link_to "Delete", article_path(@current_version.article), method: :delete  %>
+  <% if current_user %>
+    <% if current_user.clearance == "admin" || current_user.clearance == "moderator"%>
+      <br><br>
+      <span class="thicker"> Admin privileges: </span>
+      <%= link_to "Delete", article_path(@current_version.article), method: :delete  %>
+    <% end %>
   <% end %>
-
     <span class="info thicker"> Categories: </span>
 
     <% @current_version.categories.each do |category| %>
